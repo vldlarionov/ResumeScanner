@@ -1,8 +1,10 @@
+from time import time
 import streamlit as st
 import docx2txt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from PyPDF2 import PdfFileReader 
+from PyPDF2 import PdfFileReader
+import time 
 
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
@@ -58,7 +60,9 @@ try:
     match_Percentage = round(match_Percentage, 0)
 except:
     st.stop()
-
-st.sidebar.write("Your resume matches about " + str(match_Percentage)+ "% of the job description")
+with st.sidebar:
+    with st.spinner(text="Matching in progress.."):
+        time.sleep(2)
+        st.sidebar.write("Your resume matches about " + str(match_Percentage)+ "% of the job description")
 
 
