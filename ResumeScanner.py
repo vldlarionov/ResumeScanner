@@ -57,7 +57,7 @@ try:
     count_matrix = cv.fit_transform(text)
     #st.write(cosine_similarity(count_matrix))
     match_Percentage = cosine_similarity(count_matrix)[0][1] * 100
-    match_Percentage = round(match_Percentage, 0)
+    match_Percentage = round(match_Percentage, 1)
 except:
     st.stop()
 with st.sidebar:
